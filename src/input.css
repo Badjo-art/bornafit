@@ -1,0 +1,72 @@
+@import "tailwindcss";
+/* Putanja je relativna u odnosu na ovu CSS datoteku. */
+@source "../index.html";
+
+/* Vlastite boje stvaraju klase poput text-gym i bg-gym. */
+@theme {
+    --color-gym: #a3e635;
+    --color-gym-dark: #84cc16;
+    --color-gym-ink: #365314;
+    --color-gym-bg: #0c120e;
+    --color-gym-surface: #141d17;
+    --font-gym: Arial, Helvetica, sans-serif;
+}
+
+/* Vlastite Tailwind utility klase. */
+@utility btn-gym {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-gym);
+    padding: 0.875rem 1.5rem;
+    font-weight: bold;
+    color: var(--color-gym-bg);
+}
+
+@utility btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #9ca3af;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    font-weight: bold;
+    color: var(--color-gym-bg);
+}
+
+@utility fitness-card {
+    border-radius: 1rem;
+    border: 1px solid #d1d5db;
+    background-color: white;
+    padding: 2rem;
+}
+
+@layer base {
+    html { scroll-behavior: smooth; color-scheme: light dark; }
+    body { font-family: var(--font-gym); }
+    section { scroll-margin-top: 1.5rem; }
+    ::selection { background: var(--color-gym); color: var(--color-gym-bg); }
+}
+
+.hero-panel {
+    background-image: radial-gradient(ellipse at top right, #a3e63518, transparent 65%);
+}
+.skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 10;
+    padding: 0.75rem 1rem;
+    transform: translateY(-200%);
+    background: var(--color-gym);
+    color: var(--color-gym-bg);
+}
+.skip-link:focus { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; }
+    a:hover, article:hover { translate: none !important; }
+}
